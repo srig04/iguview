@@ -15,7 +15,7 @@ export default function App() {
 
   useEffect(() => {
     const site = SITES.find(s => s.id === currentSiteId) ?? SITES[0]
-    fetch(site.file)
+    fetch(`${import.meta.env.BASE_URL}${site.file.replace(/^\//, '')}`)
       .then(r => r.json())
       .then((data: TintLookup) => setTintLookup(data))
       .catch(console.error)
